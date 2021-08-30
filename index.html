@@ -176,7 +176,7 @@
         function loadTableButtonClicked(){
             var table_name = document.getElementById("idTableBatchChoices").value;
             console.log("Loading table: "+ table_name.toString())
-            var loadFileName = "https://raw.githubusercontent.com/anonGitAcc/table-viewer.github.io/main/filtered_tables_to_crowdsource_v2_" + table_name.toString() + "_single_line.txt";
+            var loadFileName = "https://raw.githubusercontent.com/anonGitAcc/table-viewer-personal.github.io/main/filtered_tables_to_crowdsource_v2_" + table_name.toString() + "_single_line.txt";
 
 
             var d = document.getElementById("tableDiv");
@@ -184,7 +184,7 @@
             document.getElementById("tableDiv").style.display = "block";
 
             var request = new XMLHttpRequest();
-            request.open('GET', 'https://raw.githubusercontent.com/anonGitAcc/table-viewer.github.io/main/filtered_tables_to_crowdsource_v2_401_to_600_single_line.txt', true);
+            request.open('GET', loadFileName, true);
             request.send(null);
             request.onreadystatechange = function () {
                 if (request.readyState === 4 && request.status === 200) {
