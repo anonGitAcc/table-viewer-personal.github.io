@@ -175,6 +175,7 @@
 
         function loadTableButtonClicked(){
             var table_name = document.getElementById("idTableBatchChoices").value;
+            console.log("Loading table: "+ table_name.toString())
             var loadFileName = "https://raw.githubusercontent.com/anonGitAcc/table-viewer.github.io/main/filtered_tables_to_crowdsource_v2_" + table_name.toString() + "_single_line.txt";
 
 
