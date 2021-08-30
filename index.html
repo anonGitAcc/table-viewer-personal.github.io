@@ -186,8 +186,8 @@
             // hide current table and show required one
             var currentTableDiv = document.getElementById("table_id_" + currentTableNumShown.toString());
             
-            var toShowTableNum = parseInt(document.getElementById("idGotoTableNumber").value);
-            console.log("To show table number : " + toShowTableNum.toString());
+            var toShowTableNum = parseInt(document.getElementById("idGotoTableNumber").value) - 1;
+            console.log("To show table number (zero indexed): " + toShowTableNum.toString());
             
             var toShowTableDiv = document.getElementById("table_id_" + toShowTableNum.toString());
             currentTableDiv.style.display = "none";
