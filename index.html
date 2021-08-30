@@ -14,9 +14,15 @@
             <option value="201_400">201 - 400</option>
             <option value="401_600">401 - 600</option>
             </select>
+            <button id="loadTableButton" onclick="loadTableButtonClicked()" >Load Table</button>
+
             <br>
             
-            <button id="loadTableButton" onclick="loadTableButtonClicked()" >Load Table</button>
+            <label for="fname">Go to table number: </label>
+            <input type="text" id="idGotoTableNumber" name="gotoTableNumber"><br><br>
+            <button id="gotoTableNumberButton" onclick="gotoTableNumberButtonClicked()">Go</button>
+            <br><br>
+
         </div>
 
         <div id ="buttonDiv" style="display: none;">
@@ -173,6 +179,29 @@
             }
         }
 
+        function gotoTableNumberButtonClicked(){
+            var currentTableNumShown = document.getElementById("currentTableNumShownDiv").innerHTML;
+            currentTableNumShown = parseInt(currentTableNumShown);
+
+            // hide current table and show required one
+            var currentTableDiv = document.getElementById("table_id_" + currentTableNumShown.toString());
+            
+            var toShowTableNum = parseInt(document.getElementById("idGotoTableNumber").value);
+            console.log("To show table number : " + toShowTableNum.toString());
+            
+            var toShowTableDiv = document.getElementById("table_id_" + toShowTableNum.toString());
+            currentTableDiv.style.display = "none";
+            toShowTableDiv.style.display = "block";
+            document.getElementById("currentTableNumShownDiv").innerHTML = toShowTableNum;
+            if (toShowTableNum == 199){
+                document.getElementById("nextButton").disabled = true;    
+            }
+            else{
+                document.getElementById("prevButton").disabled = false;
+                document.getElementById("nextButton").disabled = false;
+            }
+
+        }
         function loadTableButtonClicked(){
             var table_name = document.getElementById("idTableBatchChoices").value;
             console.log("Loading table: "+ table_name.toString())
