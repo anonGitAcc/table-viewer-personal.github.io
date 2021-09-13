@@ -7,18 +7,26 @@
     <body>
         <div id="prologue">
             
-            <label for="tableaBatchChoices">Select the table batch to view:</label>
+            <label for="tableBatchChoices">Select the table batch to view:</label>
 
             <select name="tableBatchChoices" id="idTableBatchChoices">
             <option value="only_200">1 - 200</option>
             <option value="201_to_400">201 - 400</option>
             <option value="401_to_600">401 - 600</option>
+            <option value="load_for_batch">Load for batch</option>
             </select>
+            <br>
+            <label for="idBatchNumberTextBox">Batch Number: </label>
+            <input type="text" id="idBatchNumberTextBox" name="batchNumberTextBox">
+            <br>
+
+
             <button id="loadTableButton" onclick="loadTableButtonClicked()" >Load Table</button>
 
             <br>
+
             
-            <label for="fname">Go to table number: </label>
+            <label for="idGotoTableNumber">Go to table number: </label>
             <input type="text" id="idGotoTableNumber" name="gotoTableNumber">
             <button id="gotoTableNumberButton" onclick="gotoTableNumberButtonClicked()">Go</button>
             <br><br>
@@ -205,8 +213,14 @@
         function loadTableButtonClicked(){
             var table_name = document.getElementById("idTableBatchChoices").value;
             console.log("Loading table: "+ table_name.toString())
-            var loadFileName = "https://raw.githubusercontent.com/anonGitAcc/table-viewer.github.io/main/filtered_tables_to_crowdsource_v2_" + table_name.toString() + "_single_line.txt";
-
+            var loadFileName = None;
+            if (table_name != "load_for_batch"){
+                loadFileName = "https://raw.githubusercontent.com/anonGitAcc/table-viewer.github.io/main/filtered_tables_to_crowdsource_v2_" + table_name.toString() + "_single_line.txt";
+            }
+            else{
+                var batch_number = parseInt(document.getElementById("batchNumberTextBox").value);
+                loadFileName = "https://raw.githubusercontent.com/anonGitAcc/table-viewer.github.io/main/all_annotation_table_batches/filtered_tables_to_crowdsource_v2_batch" + batch_number.toString() + "_single_line.txt";
+            }
             var d = document.getElementById("tableDiv");
             d.innerHTML = "";
             document.getElementById("tableDiv").style.display = "block";
