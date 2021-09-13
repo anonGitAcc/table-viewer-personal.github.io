@@ -218,7 +218,7 @@
                 loadFileName = "https://raw.githubusercontent.com/anonGitAcc/table-viewer.github.io/main/filtered_tables_to_crowdsource_v2_" + table_name.toString() + "_single_line.txt";
             }
             else{
-                var batch_number = parseInt(document.getElementById("batchNumberTextBox").value);
+                var batch_number = parseInt(document.getElementById("idBatchNumberTextBox").value);
                 loadFileName = "https://raw.githubusercontent.com/anonGitAcc/table-viewer.github.io/main/all_annotation_table_batches/filtered_tables_to_crowdsource_v2_batch" + batch_number.toString() + "_single_line.txt";
             }
             var d = document.getElementById("tableDiv");
